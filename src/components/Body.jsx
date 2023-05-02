@@ -1,12 +1,15 @@
 import React , {useState,useEffect} from 'react'
-import { Link, Navigate, Outlet,useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { ethers } from "ethers";
+import CircularJSON from 'circular-json';
+
 import ElectionCard from './ElectionCard';
 
 
 const Body = ({state}) => {
 
   const navigate = useNavigate();
+  console.log("entry point" , state);
   const [totElections , settotElections] = useState();
   const [electionList,setElectionList] = useState([]);
 
@@ -14,6 +17,7 @@ const Body = ({state}) => {
 
   useEffect(() => {
       const getelections = async () => {
+        console.log("in function getelections" , state);
         const { contract } = state;
         const transaction1 = await contract.getElection(0);
         // settotElections(transaction1[0]);
@@ -77,11 +81,12 @@ const Body = ({state}) => {
     //     await transaction2.wait();
     //     console.log("Transaction is done");
     // };
+    
   return (
 
     <div className="">
       <div className="flex">
-          <button onClick={()=> navigate('newelection',{state})}>
+          <button onClick={()=> navigate(`/newelection?data=${state}`) }>
             <div className="flex justify-center items-center text-center bg-orange-400 hover:scale-105 w-[150px] rounded-xl m-5 h-10 ">
                 <p className=' font-medium text-md'><span className='text-lg font-bold'>+ </span>Start Election</p>
             </div>

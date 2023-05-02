@@ -57,7 +57,13 @@ const Home = () => {
   return (
     <div>
         <AppBar account={account}/>
-        <Body state={state}/>
+        {
+
+          (state.contract && state.provider && state.signer) === null?<div></div>:
+
+              <Body state={state}/>
+          
+        }
     </div>
   )
 }
