@@ -25,6 +25,7 @@ const MyElections = () => {
 
   
   const getelections = useCallback(async () => {
+
     const { contract } = state;
   
     const ide = searchparams.get("id");
@@ -32,23 +33,43 @@ const MyElections = () => {
     console.log(parseInt(ide));
     const transaction2 = await contract.getElection(parseInt(ide));
     setdata(transaction2[1]);
-    console.log("data",data);
+    console.log("data",transaction2);
     const transaction1 = await contract.getVotersStatus(parseInt(ide));
     setdata1(transaction1);
-    console.log("voters:",data1);
+    console.log("voters:",transaction1);
     setid(parseInt(ide));
     setowner(transaction2[0].owner);
     setelectionName(transaction2[0].name);
   
     if (transaction2[0].isActive === false) {
       console.log("is active", transaction2[0].isActive);
-      await maxcount();
       setvisible(true);
+      await maxcount(transaction2[1]);
     }
   }, [searchparams, state]);
   
   useEffect(() => {
-    getelections();
+    console.log("before function state",state);
+    const { provider } = state;
+    if(provider === null){
+      console.log("inside if");
+      const contractAddress = "0x162650bf3fBc8a5E400c568bA7BbAc6a4022C2Be";
+      const contractABI = abi.abi;
+      const { ethereum } = window;
+      const provider = new ethers.providers.Web3Provider(ethereum);
+          const signer = provider.getSigner();
+          const contract = new ethers.Contract(
+            contractAddress,
+            contractABI,
+            signer
+          );
+      setState({ provider, signer, contract },getelections);
+
+      console.log("refreshed State",state);
+    }else{
+
+      getelections();
+    }
   }, [getelections]);
   
 
@@ -76,30 +97,38 @@ const MyElections = () => {
       console.log("Transaction is done");
       setmessage("Transaction done");
       setvisible(true);
-      maxcount();
+      maxcount(data);
     } catch (error) {
       setmessage(error.reason);
     }
   };
 
-  const maxcount = async() => {
+  const maxcount = async(indata) => {
 
-    console.log("data in maxcount" , data);
+    console.log("data in maxcount" , indata);
     let max = 0 ;
+    let count = 0;
     let iteration;
    
-     for(let i=0;i<data.length;i++){
-      if(parseInt(data[i].voteCount) > max){
-        max = parseInt(data[i].voteCount) ;
+     for(let i=0;i<indata.length;i++){
+      if(parseInt(indata[i].voteCount) >= max){
+        max = parseInt(indata[i].voteCount) ;
         iteration=i;
+        
+      }
+     }
+
+     for(let i=0;i<indata.length;i++){
+      if(parseInt(indata[i].voteCount) === max){
+        count++;
       }
      }
 
      console.log("max" , max);
-     setwinner(data[iteration].name);
-
-
-    
+     if(count ===1)
+      setwinner(indata[iteration].name);
+     else
+     setwinner("Draw");
   };
 
   return (
@@ -151,7 +180,8 @@ const MyElections = () => {
               Vote{" "}
             </span>
           </button>
-        </div>: <div className="flex mx-auto justify-center ">
+        </div>: <div className="flex-col mx-auto justify-center my-10">
+          <h1 className="text-2xl text-center text-orange-400 font-extrabold my-10">The Election has Ended</h1>
           <span className="text-2xl text-center text-orange-400 font-extrabold my-10">Winner : <span className="text-violet-700 font-extrabold text-2xl text-center">{winner}</span> </span>
             
         </div>

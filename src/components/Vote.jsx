@@ -42,51 +42,52 @@ const Vote = () => {
   };
 
   return (
-    <div>
-      <div className=" flex-col justify-center items-center">
-        <h1 className="text-xl text-center font-bold pb-30 ">Candidates</h1>
-        <table class="table-auto mx-auto my-20 ">
-          <thead>
-            <tr>
-              <th class=" px-24 bg-violet-700 text-white py-2">
-                Candidate Name
-              </th>
-              <th class="px-24 bg-violet-700  text-white py-2">
-                Number of Votes
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {data === null ? (
-              <div className="">Loading..</div>
-            ) : (
-              data.map((item, index) => (
-                <tr key={index}>
-                  <td className=" text-md font-semibold px-24 py-2">
-                    {data[index].name}{" "}
-                  </td>
-                  <td className=" text-md font-semibold px-24 py-2">
-                    {parseInt(data[index].voteCount)}
-                  </td>
-                  <td>
-                    <div className="flex mx-auto justify-center text-white bg-violet-700 hover:scale-105 w-auto rounded-xl m-5 px-10 h-10 ">
-                      <button onClick={() => AddVote(index)}>
-                        <span className="text-lg text-center self-center font-bold">
-                          Vote
-                        </span>
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))
-            )}
-          </tbody>
-        </table>
+      <div className="bg-violet-100 h-screen w-auto px-5">
+        <div className=" flex-col justify-center items-center">
+          <h1 className="text-xl md:text-3xl  text-violet-700 text-center font-extrabold pb-30 pt-28">Candidates</h1>
+          <table class="table-auto mx-auto mt-10 ">
+            <thead>
+              <tr>
+                <th class=" px-10 md:px-24 bg-violet-700 text-white py-0 md:py-2">
+                  Candidate Name
+                </th>
+                <th class=" px-10 md:px-24 bg-violet-700  text-white py-0 md:py-2">
+                  Number of Votes
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {data === null ? (
+                <div className="">Loading..</div>
+              ) : (
+                data.map((item, index) => (
+                  <tr key={index}>
+                    <td className=" text-md font-semibold px-10 md:px-24  py-0 md:py-2">
+                      {data[index].name}{" "}
+                    </td>
+                    <td className=" text-md font-semibold px-10 md:px-24 py-0 md:py-2">
+                      {parseInt(data[index].voteCount)}
+                    </td>
+                    <td>
+                      <div className="flex mx-auto justify-center text-white bg-violet-700 hover:scale-105 w-auto rounded-xl m-5 px-5 md:px-10 h-7 md:h-10 ">
+                        <button onClick={() => AddVote(index)}>
+                          <span className="text-sm md:text-lg text-center self-center font-bold">
+                            Vote
+                          </span>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+          <p className="text-center text-sm md:text-lg font-semibold text-red-400 my-20">
+            {msg}
+          </p>
+        </div>
       </div>
-      <p className="text-center text-lg font-semibold text-red-400 my-15">
-        {msg}
-      </p>
-    </div>
+  
   );
 };
 

@@ -17,7 +17,7 @@ const AppBar = ({account}) => {
             </div>
             <div className=" absolute top-20  md:top-auto md:right-28 ">
                 {hidden===true?<div className="h-auto w-auto">
-                    <p  className='text-lg sm:text-sm text-black md:text-white'> {account}</p>
+                    <p  className='text-xl font-bold sm:text-sm text-black md:text-white'> {account}</p>
                 </div>:<div></div>}
             </div>
             <div className=" h-14 w-14 md:h-16 md:w-16">

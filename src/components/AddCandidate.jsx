@@ -33,17 +33,17 @@ const AddCandidate = () => {
     };
     return (
       
-      <div className='w-screen h-screen bg-slate-300 flex items-center justify-center text-center'>
-          <form className="bg-white shadow-md rounded-xl px-16 pt-6 pb-8 mb-4">
+      <div className='w-screen h-screen bg-violet-100 flex items-center justify-center text-center'>
+          <form className="bg-violet-700 shadow-md rounded-xl px-40 pt-20 pb-20 mb-4">
               <div className="mb-4 ">
-              <label className="block text-gray-700 text-lg font-medium mb-2" htmlFor="electionname">
-                 Candidate Name
-              </label>
-              <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="electionname" onChange={changeValue} type="text" placeholder="Candidate Name"/>
+                <label className="block text-white text-xl  font-extrabold mb-2" htmlFor="electionname">
+                  Add Candidate
+                </label>
+                <input className="shadow appearance-none border rounded w-full py-2 my-5 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="electionname" onChange={changeValue} type="text" placeholder="Candidate Name"/>
               </div>
               
               
-              <button onClick={()=>{AddCandidates()}} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="button">
+              <button onClick={()=>{AddCandidates()}} className="bg-white hover:bg-blue-700 text-violet-700 font-bold py-2 px-14 rounded focus:outline-none focus:shadow-outline" type="button">
                   Add
               </button>
               <p className='text-red-400 pt-5'>{msg}</p>
