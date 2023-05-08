@@ -43,7 +43,7 @@ const AddCandidate = () => {
               </div>
               
               
-              <button onClick={()=>{AddCandidates()}} className="bg-white hover:bg-blue-700 text-violet-700 font-bold py-2 px-14 rounded focus:outline-none focus:shadow-outline" type="button">
+              <button onClick={()=>{AddCandidates()}} className="bg-white hover:bg-violet-100 text-violet-700 font-bold py-2 px-14 rounded focus:outline-none focus:shadow-outline" type="button">
                   Add
               </button>
               <p className='text-red-400 pt-5'>{msg}</p>

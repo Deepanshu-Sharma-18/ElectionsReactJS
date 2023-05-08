@@ -24,10 +24,6 @@ const AddVoter = () => {
       setmessage("transaction is done");
       nav(-1);
     }catch (error) {
-//       const errorData = JSON.parse(error);
-// const errorMessage = errorData.data.originalError.message;
-// console.log(errorMessage); // "execution reverted: The voter has already been added."
-
       console.log(error.reason)
       setmessage(error.reason);
     }
@@ -51,7 +47,7 @@ const AddVoter = () => {
             </div>
             
             
-            <button onClick={()=>{AddVoters()}} className="bg-white hover:bg-blue-700 text-violet-700 font-bold py-2 px-14 rounded focus:outline-none focus:shadow-outline" type="button">
+            <button onClick={()=>{AddVoters()}} className="bg-white hover:bg-violet-100 text-violet-700 font-bold py-2 px-14 rounded focus:outline-none focus:shadow-outline" type="button">
                 Add
             </button>
             <p className='text-red-400 pt-5'>{msg}</p>

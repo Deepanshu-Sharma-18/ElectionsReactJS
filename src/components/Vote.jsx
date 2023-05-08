@@ -28,7 +28,7 @@ const Vote = () => {
   
   const AddVote = async (index) => {
     try {
-      setmessage(" Executing transaction... Please Wait");
+      setmessage(" Executing Transaction... Please Wait");
       const { contract } = state;
       const id = searchparams.get("id");
       const transaction1 = await contract.vote(parseInt(id), index);
@@ -45,13 +45,13 @@ const Vote = () => {
       <div className="bg-violet-100 h-screen w-auto px-5">
         <div className=" flex-col justify-center items-center">
           <h1 className="text-xl md:text-3xl  text-violet-700 text-center font-extrabold pb-30 pt-28">Candidates</h1>
-          <table class="table-auto mx-auto mt-10 ">
+          <table className="table-auto mx-auto mt-10 ">
             <thead>
               <tr>
-                <th class=" px-10 md:px-24 bg-violet-700 text-white py-0 md:py-2">
+                <th className=" px-10 md:px-24 bg-violet-700 text-white py-0 md:py-2">
                   Candidate Name
                 </th>
-                <th class=" px-10 md:px-24 bg-violet-700  text-white py-0 md:py-2">
+                <th className=" px-10 md:px-24 bg-violet-700  text-white py-0 md:py-2">
                   Number of Votes
                 </th>
               </tr>

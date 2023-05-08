@@ -12,7 +12,7 @@ const MyElections = () => {
   const { state, setState } = useContext(StateContext);
   const [searchparams] = useSearchParams();
   const navigate = useNavigate();
-  const [msg, setmessage] = useState("Transaction may take 15-30s to execute");
+  const [msg, setmessage] = useState("Transaction may take 15-30s to execute. Keep Refreshing to view changes");
 
   const [electionName, setelectionName] = useState("");
   const [data, setdata] = useState([]);
@@ -50,7 +50,7 @@ const MyElections = () => {
     const { provider } = state;
     if (provider === null) {
       console.log("inside if");
-      const contractAddress = "0x162650bf3fBc8a5E400c568bA7BbAc6a4022C2Be";
+      const contractAddress = process.env.REACT_APP_CONTRACT_ADD;
       const contractABI = abi.abi;
       const { ethereum } = window;
       const provider = new ethers.providers.Web3Provider(ethereum);
@@ -84,7 +84,7 @@ const MyElections = () => {
 
   const endElection = async () => {
     try {
-      setmessage(" executing transaction... Please Wait");
+      setmessage(" Executing Transaction... Please Wait");
       const { contract } = state;
       const id = searchparams.get("id");
       const transaction2 = await contract.endElection(parseInt(id));
@@ -105,7 +105,7 @@ const MyElections = () => {
     let iteration;
 
     for (let i = 0; i < indata.length; i++) {
-      if (parseInt(indata[i].voteCount) >= max) {
+      if (parseInt(indata[i].voteCount) >= max && indata[i].voteCount > 0) {
         max = parseInt(indata[i].voteCount);
         iteration = i;
       }
@@ -136,7 +136,7 @@ const MyElections = () => {
             <div className="flex justify-center items-center text-center bg-violet-700 hover:scale-105 w-[150px] rounded-xl m-5 h-10 ">
               <p className=" font-medium text-md">
                 <span className="text-lg font-bold text-white">
-                  Start Election{" "}
+                  Activate Election{" "}
                 </span>
               </p>
             </div>
@@ -175,7 +175,7 @@ const MyElections = () => {
         ) : (
           <div className="flex-col mx-auto justify-center my-10">
             <h1 className="text-2xl text-center text-orange-400 font-extrabold my-10">
-              The Election has Ended
+              The Election is Not Active
             </h1>
             <span className="text-2xl text-center text-orange-400 font-extrabold my-10">
               Winner :{" "}

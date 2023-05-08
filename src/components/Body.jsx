@@ -54,11 +54,11 @@ const Body = ({ state }) => {
             <h1>Live Elections </h1>
           </div>
 
-          <div className=" flex flex-wrap justify-start sm:px-32  items-start mx-5 my-9 w-screen">
+          <div className=" flex justify-start md:justify-center sm:px-32 items-start md:items-center mx-5 my-9 w-screen">
             {electionList === null ? (
               <div className="">Loading......</div>
             ) : (
-              electionList.length === 0? <div className="flex justify-center items-center text-center text-xl my-44 font-bold text-blue-700">No Live Elections </div>:
+              electionList.length === 0? <div className="flex justify-center items-center text-center text-2xl my-44 font-extrabold text-blue-700">No Live Elections </div>:
               electionList.map((item, index) => (
                 <button
                   onClick={() =>
