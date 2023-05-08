@@ -19,7 +19,7 @@ const NewElection = () => {
   
   const startElections = async() => {
     try{
-
+      setMsg("Transaction is being processed");
       const { contract } = state;
 
           const transaction1 = await contract.createElection(elecname);
