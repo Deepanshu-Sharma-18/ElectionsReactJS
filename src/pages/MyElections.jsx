@@ -136,7 +136,7 @@ const MyElections = () => {
             <div className="flex justify-center items-center text-center bg-violet-700 hover:scale-105 w-[150px] rounded-xl m-5 h-10 ">
               <p className=" font-medium text-md">
                 <span className="text-lg font-bold text-white">
-                  Activate Election{" "}
+                  Start Election{" "}
                 </span>
               </p>
             </div>

@@ -44,7 +44,7 @@ const Body = ({ state }) => {
             <button onClick={() => navigate(`/newelection`)}>
               <div className="flex justify-center items-center text-center bg-orange-400 hover:scale-105 w-[150px] rounded-xl m-5 h-10 ">
                 <p className=" font-medium text-md">
-                  <span className="text-lg font-bold">+ </span>Start Election
+                  <span className="text-lg font-bold">+ </span>Create Election
                 </p>
               </div>
             </button>
