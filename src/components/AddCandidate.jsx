@@ -2,6 +2,7 @@ import React,{useState,useContext} from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { ethers } from "ethers";
 import { StateContext } from '../data/StateContext';
+import AppBar from './AppBar';
 
 const AddCandidate = () => {
   
@@ -32,7 +33,8 @@ const AddCandidate = () => {
       setVoteradd(event.target.value);
     };
     return (
-      
+      <div className="">
+        <AppBar/>
       <div className='w-screen h-screen bg-violet-100 flex items-center justify-center text-center'>
           <form className="bg-violet-700 shadow-md rounded-xl px-40 pt-20 pb-20 mb-4">
               <div className="mb-4 ">
@@ -49,6 +51,7 @@ const AddCandidate = () => {
               <p className='text-red-400 pt-5'>{msg}</p>
           </form>
           
+      </div>
       </div>
     )
 }

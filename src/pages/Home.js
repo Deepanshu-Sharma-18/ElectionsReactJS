@@ -60,7 +60,7 @@ const Home = () => {
 
           (state.contract && state.provider && state.signer) === null?<div></div>:
 
-              <Body state={state}/>
+              <Body state={state} account={account}/>
           
         }
     </div>

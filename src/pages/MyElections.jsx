@@ -7,6 +7,7 @@ import {
   createSearchParams,
   useNavigate,
 } from "react-router-dom";
+import AppBar from "../components/AppBar";
 
 const MyElections = () => {
   const { state, setState } = useContext(StateContext);
@@ -123,9 +124,10 @@ const MyElections = () => {
   };
 
   return (
-    <div className="h-full w-full bg-violet-100 flex-col py-10 px-4 ">
-      <div className="container w-screen flex-col justify-center items-center">
-        <h1 className=" text-violet-700 font-extrabold text-3xl text-center">
+    <div className="h-full w-full bg-violet-100 flex-col  ">
+      <AppBar/>
+      <div className="container w-screen pt-10 px-4 flex-col justify-center items-center">
+        <h1 className=" text-violet-700 font-extrabold text-5xl text-center">
           {electionName}
         </h1>
         <h1 className=" text-violet-700 font-semibold text-sm text-center">
@@ -133,7 +135,7 @@ const MyElections = () => {
         </h1>
         <div className="flex items-center justify-around">
           <button onClick={startElection}>
-            <div className="flex justify-center items-center text-center bg-violet-700 hover:scale-105 w-[150px] rounded-xl m-5 h-10 ">
+            <div className="flex justify-center items-center text-center bg-violet-700 hover:scale-105 w-[150px] rounded-xl m-5 h-14 ">
               <p className=" font-medium text-md">
                 <span className="text-lg font-bold text-white">
                   Start Election{" "}
@@ -142,7 +144,7 @@ const MyElections = () => {
             </div>
           </button>
           <button onClick={endElection}>
-            <div className="flex justify-center items-center text-center bg-violet-700 hover:scale-105 w-[150px] rounded-xl m-5 h-10 ">
+            <div className="flex justify-center items-center text-center bg-violet-700 hover:scale-105 w-[150px] rounded-xl m-5 h-14 ">
               <p className=" font-medium text-md">
                 <span className="text-lg font-bold text-white">
                   End Election{" "}
@@ -155,7 +157,7 @@ const MyElections = () => {
 
       <div className=" flex justify-center w-screen items-center">
         {visible === false ? (
-          <div className="flex mx-auto justify-center text-white bg-violet-700 hover:scale-105 w-[165px] rounded-xl my-7 h-10 ">
+          <div className="flex mx-auto justify-center text-white bg-violet-700 hover:scale-105 w-[165px] rounded-xl my-7 h-14 ">
             <button
               onClick={() =>
                 navigate({
@@ -167,7 +169,6 @@ const MyElections = () => {
               }
             >
               <span className="text-lg text-center self-center font-bold">
-                {" "}
                 Vote{" "}
               </span>
             </button>
@@ -229,7 +230,7 @@ const MyElections = () => {
           </tbody>
         </table>
 
-        <div className="flex mx-auto justify-center text-white bg-violet-700 hover:scale-105 w-[165px] rounded-xl m-5 h-10 ">
+        <div className="flex mx-auto justify-center text-white bg-violet-700 hover:scale-105 w-[165px] rounded-xl m-5 h-14 ">
           <button
             onClick={() =>
               navigate({
@@ -287,7 +288,7 @@ const MyElections = () => {
           </tbody>
         </table>
 
-        <div className="flex mx-auto justify-center text-white bg-violet-700 hover:scale-105 w-[165px] rounded-xl my-10 h-10 ">
+        <div className="flex mx-auto justify-center text-white bg-violet-700 hover:scale-105 w-[165px] rounded-xl my-10 h-14 ">
           <button
             onClick={() =>
               navigate({
@@ -303,6 +304,7 @@ const MyElections = () => {
             </span>
           </button>
         </div>
+        <div className="h-10"></div>
       </div>
     </div>
   );

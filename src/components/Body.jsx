@@ -2,9 +2,10 @@ import React, { useState, useEffect } from "react";
 import { createSearchParams, useNavigate } from "react-router-dom";
 import { ethers } from "ethers";
 
+
 import ElectionCard from "./ElectionCard";
 
-const Body = ({ state }) => {
+const Body = ({ state,account }) => {
   const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
   console.log("entry point", state);
@@ -34,6 +35,7 @@ const Body = ({ state }) => {
 
   return (
     <div className="mx-auto">
+ 
       {visible === false ? (
         <div className="flex w-screen h-screen justify-center items-center text-lg font-bold">
           Loading....
